@@ -27,15 +27,14 @@ function onFormSubmit(e) {
 };
 
 function populateFormData() {
-    const savedFormData = localStorage.getItem(STORAGE_KEY); 
+    let savedFormData = localStorage.getItem(STORAGE_KEY); 
 
     if (savedFormData) {
-        const parsedSavedFormData = JSON.parse(savedFormData);
-
-        formData.email = parsedSavedFormData.email;
-        formData.message = parsedSavedFormData.message;
-            
-        form.email.value = parsedSavedFormData.email || "";
-        form.message.value = parsedSavedFormData.message || "";  
-    }
+        savedFormData = JSON.parse(savedFormData);
+        
+        Object.entries(savedFormData).forEach(([name, value]) => {
+            formData[name] = value;
+            form.elements[name].value = value;
+        });
+    };
 };
