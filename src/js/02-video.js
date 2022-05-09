@@ -15,4 +15,6 @@ function savePlayerCurrentTime(e) {
 
 let playerCurrentTime = localStorage.getItem("videoplayer-current-time")
 
-player.setCurrentTime(playerCurrentTime);
+if (playerCurrentTime) {
+    player.setCurrentTime(playerCurrentTime);
+};
