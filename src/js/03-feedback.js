@@ -18,13 +18,15 @@ function onFormInput(e) {
 };
 
 function onFormSubmit(e) {
-    e.preventDefault();
+    if (formData.email && formData.message) {
+        e.preventDefault();
 
-    console.log(formData);
-    
-    e.currentTarget.reset();
-    localStorage.removeItem(STORAGE_KEY);
-    formData = {};
+        console.log(formData);
+        
+        e.currentTarget.reset();
+        localStorage.removeItem(STORAGE_KEY);
+        formData = {};
+    } else alert("Все поля должны быть заполнены!");
 };
 
 function populateFormData() {
